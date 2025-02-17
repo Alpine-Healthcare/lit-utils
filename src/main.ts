@@ -34,7 +34,6 @@ export const delegateCapacityCredit = async (
         expiration: new Date(Date.now() + 1000 * 60 * 10000).toISOString(), // 10 minutes
       });
     console.log("✅ Generated delegation Auth Signature");
-    console.log("capacityDelegationAuthSig: ", capacityDelegationAuthSig)
 
     return capacityDelegationAuthSig;
   } catch (error) {
@@ -47,10 +46,11 @@ export const delegateCapacityCredit = async (
 
 export const main = async (): Promise<void> => {
 
-  const addressToDelegate = "0xcbc11e534077a181476c7a5c511a5ffb4c17db65"
-  const capacityCreditId = "110585"
+  const addressToDelegate = "0xCbc11E534077a181476c7a5c511a5ffb4c17dB65"
+  const capacityCreditId = "120085"
 
-  await delegateCapacityCredit(capacityCreditId, addressToDelegate)
+  const capacityDelegationAuthSig =  await delegateCapacityCredit(capacityCreditId, addressToDelegate)
+  console.log("capacityDelegationAuthSig: ", capacityDelegationAuthSig)
 }
 
 main()
