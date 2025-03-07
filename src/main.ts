@@ -2,7 +2,7 @@ import ethers from "ethers";
 import { LIT_RPC, LIT_NETWORK } from "@lit-protocol/constants";
 import { LitNodeClient } from "@lit-protocol/lit-node-client";
 
-const ETHEREUM_PRIVATE_KEY= "2a121edbe5c8f55f0c5a1edb63449f0efdeb3731b8ab28c91f81dcc143c8ea32";
+const ETHEREUM_PRIVATE_KEY= "";
 
 export const delegateCapacityCredit = async (
   capacityTokenId: string,
@@ -29,7 +29,7 @@ export const delegateCapacityCredit = async (
       await litNodeClient.createCapacityDelegationAuthSig({
         dAppOwnerWallet: ethersSigner,
         capacityTokenId,
-        delegateeAddresses: [delegateeAddress],
+        delegateeAddresses: [],
         uses: "1000",
         expiration: new Date(Date.now() + 1000 * 60 * 10000).toISOString(), // 10 minutes
       });
@@ -46,8 +46,8 @@ export const delegateCapacityCredit = async (
 
 export const main = async (): Promise<void> => {
 
-  const addressToDelegate = "0xCbc11E534077a181476c7a5c511a5ffb4c17dB65"
-  const capacityCreditId = "120085"
+  const addressToDelegate = "0x6309Bd836Fd8FD103742bf3b87A09a1a016eA959"
+  const capacityCreditId = "128716"
 
   const capacityDelegationAuthSig =  await delegateCapacityCredit(capacityCreditId, addressToDelegate)
   console.log("capacityDelegationAuthSig: ", capacityDelegationAuthSig)
